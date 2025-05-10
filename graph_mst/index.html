@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>グラフの最小全域木問題</title>
+    <link rel="stylesheet" href="./../styles.css">
+</head>
+<body>
+    <ul class="breadcrumb">
+        <li><a href="./../">アルゴリズムの学習</a></li>
+        <li>グラフの最小全域木問題</li>
+    </ul>
+
+    <div class="container">
+        <h1>グラフの最小全域木問題</h1>
+
+        <div class="section">
+            <h2>問題の概要</h2>
+            <p>グラフの最小全域木（Minimum Spanning Tree, MST）とは、無向グラフGのすべての頂点を含み、辺の重みの合計が最小になる木構造（閉路を持たない連結部分グラフ）です。つまり、与えられたグラフの全ての点を最小コストで接続するための経路を求める問題です。</p>
+            <p>この問題は、通信ネットワーク、道路網、電気回路など、最小コストでノード間を接続する必要がある多くの実世界の応用があります。例えば：</p>
+            <ul>
+                <li>最小コストでの通信ネットワークの構築</li>
+                <li>都市間の道路網の最適設計</li>
+                <li>クラスタリングアルゴリズムの一部として</li>
+                <li>電力網や水道網などのインフラ設計</li>
+            </ul>
+            <p>
+                最小全域木の性質として：
+            </p>
+            <ul>
+                <li>n個の頂点を持つグラフの全域木は必ず(n-1)個の辺を持ちます</li>
+                <li>グラフが連結であれば、少なくとも1つの最小全域木が存在します</li>
+                <li>辺の重みがすべて異なる場合、最小全域木は一意に決まります</li>
+            </ul>    
+        </div>
+
+        <div class="section">
+            <h2>図解</h2>
+            <ul>
+                <li><a href="./visual/">最小全域木問題の図解</a></li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>アルゴリズム</h2>
+            <ul>
+                <li><a href="./prims/">プリム法 (Prim)</a> (<a href="https://github.com/yunbow/learning_algorithms/tree/main/graph_mst/prims/src/" target="_blank">ソースコード</a>)</li>
+                <li><a href="./kruskal/">クラスカル法 (Kruskal)</a> (<a href="https://github.com/yunbow/learning_algorithms/tree/main/graph_mst/kruskal/src/" target="_blank">ソースコード</a>)</li>
+                <li><a href="./boruvka/">ブルーフカ法 (Borůvka)</a></li>
+                <li><a href="./reverse_delete/">逆削除法 (Reverse-Delete)</a></li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>アルゴリズム比較表</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>アルゴリズム</th>
+                        <th>平均計算量</th>
+                        <th>長所</th>
+                        <th>短所</th>
+                        <th>適用ケース</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>プリム法</strong></td>
+                        <td>O(E log V)</td>
+                        <td>
+                            <ul>
+                                <li>密グラフに効率的</li>
+                                <li>実装がシンプル</li>
+                                <li>単一の開始点から成長</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>疎グラフでは非効率的</li>
+                                <li>分散処理に向かない</li>
+                            </ul>
+                        </td>
+                        <td>密なグラフ (|E| ≈ |V|²)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>クラスカル法</strong></td>
+                        <td>O(E log E)</td>
+                        <td>
+                            <ul>
+                                <li>疎グラフに効率的</li>
+                                <li>複数の部分木から同時に成長</li>
+                                <li>辺が少ない場合に高速</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Union-Findデータ構造が必要</li>
+                                <li>密グラフではプリム法より遅い場合がある</li>
+                            </ul>
+                        </td>
+                        <td>疎なグラフ (|E| ≪ |V|²)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ブルーフカ法</strong></td>
+                        <td>O(E log V)</td>
+                        <td>
+                            <ul>
+                                <li>並列処理に適している</li>
+                                <li>複数の成長点から同時に進行</li>
+                                <li>歴史的に最初のMSTアルゴリズム</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>実装が複雑</li>
+                                <li>一般的に使用頻度が低い</li>
+                            </ul>
+                        </td>
+                        <td>並列処理が必要な大規模グラフ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>逆削除法</strong></td>
+                        <td>O(E log E (log log V))</td>
+                        <td>
+                            <ul>
+                                <li>クラスカル法の双対</li>
+                                <li>重い辺から順に削除</li>
+                                <li>特定のケースで有効</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>連結性チェックの計算コストが高い</li>
+                                <li>実装が複雑</li>
+                                <li>他の方法より一般的に遅い</li>
+                            </ul>
+                        </td>
+                        <td>特殊なケースや理論的分析</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

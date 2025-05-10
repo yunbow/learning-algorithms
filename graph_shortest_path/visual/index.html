@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>グラフ最短経路の図解(A*)</title>
+    <link rel="stylesheet" href="./../../styles.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <ul class="breadcrumb">
+        <li><a href="./../../">アルゴリズムの学習</a></li>
+        <li><a href="./../">グラフの最短経路問題</a></li>
+        <li>図解</li>
+    </ul>
+
+    <div class="container">
+        <h1>グラフ最短経路の図解(A*)</h1>
+        
+        <div class="controls">
+            <button id="run-animation" class="button-primary">アニメーション実行</button>
+            <button id="step-button" class="button-primary">ステップ実行</button>
+            <button id="clear-button" class="button-danger">クリア</button>
+        </div>
+        
+        <div class="speed-control">
+            <label for="speed">速度調整:</label>
+            <input type="range" id="speed" min="1" max="10" value="5">
+            <span id="speed-value">5</span>
+        </div>
+        
+        <div class="graph-container">
+            <svg id="graph" width="800" height="500"></svg>
+        </div>
+        
+        <div class="description" id="description">
+            A*アルゴリズムを開始するには、「アニメーション実行」または「ステップ実行」ボタンをクリックしてください。
+        </div>
+        
+        <div class="progress">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        
+        <div class="metrics">
+            <div class="metric">
+                <span>探索済みノード数: </span>
+                <span id="explored-count">0</span>
+            </div>
+            <div class="metric">
+                <span>パスの長さ: </span>
+                <span id="path-length">-</span>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

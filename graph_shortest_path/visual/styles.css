@@ -1,0 +1,101 @@
+.graph-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    background-color: white;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.node text {
+    font-size: 12px;
+    fill: #333;
+    text-anchor: middle;
+    dominant-baseline: central;
+}
+
+.edge-cost {
+    font-size: 12px;
+    fill: #555;
+    text-anchor: middle;
+}
+
+.metrics {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.metric {
+    background-color: #f8f9fa;
+    padding: 10px 15px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.node-heuristic {
+    font-size: 10px;
+    fill: #e74c3c;
+    text-anchor: middle;
+    dominant-baseline: central;
+}
+
+.node-f-score {
+    font-size: 10px;
+    fill: #3498db;
+    text-anchor: middle;
+    dominant-baseline: central;
+}
+
+.node-labels {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.node-label {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+    font-size: 14px;
+}
+
+.node-label-color {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    border-radius: 50%;
+}
+
+/* Start node label color */
+.start-color {
+    background-color: #e67e22;
+}
+
+/* Goal node label color */
+.goal-color {
+    background-color: #9b59b6;
+}
+
+/* Open node label color */
+.open-color {
+    background-color: #3498db;
+}
+
+/* Closed node label color */
+.closed-color {
+    background-color: #27ae60;
+}
+
+/* Path node label color */
+.path-color {
+    background-color: #f39c12;
+}
+
+.edge-path {
+    stroke: #f39c12;
+    stroke-width: 3px;
+}
