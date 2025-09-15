@@ -1,3 +1,5 @@
-# learning_algorithms
+# learning\_algorithms
+
 アルゴリズムの学習
-https://yunbow.github.io/learning_algorithms
+https://yunbow.github.io/learning-algorithms
+
